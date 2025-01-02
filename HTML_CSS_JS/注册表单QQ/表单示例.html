@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 设置文档的字符编码为UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- 设置视口，使页面在移动设备上正确显示 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 设置页面标题 -->
+    <title>表单示例</title>
+    <style>
+        /* 设置全局样式 */
+        body {
+            font-family: Arial, sans-serif; /* 使用Arial字体 */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            height: 100vh; /* 使页面高度占满整个视口 */
+            background-color: #f4f4f4; /* 设置背景颜色 */
+        }
+        /* 表单样式 */
+        form {
+            background-color: #fff; /* 表单背景为白色 */
+            padding: 20px; /* 内边距 */
+            border-radius: 8px; /* 圆角边框 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+            width: 500px; /* 表单宽度 */
+        }
+        /* 头部样式 */
+        header {
+            text-align: center; /* 文字居中 */
+            margin-bottom: 20px; /* 底部外边距 */
+        }
+        header h1 {
+            margin: 0; /* 去除默认的外边距 */
+            font-size: 24px; /* 标题字体大小 */
+            color: #333; /* 标题颜色 */
+        }
+        header p {
+            margin: 5px 0 0; /* 段落的外边距 */
+            font-size: 14px; /* 描述字体大小 */
+            color: #666; /* 描述颜色 */
+        }
+        /* 标签样式 */
+        label {
+            display: block; /* 使标签独占一行 */
+            margin-bottom: 8px; /* 底部外边距 */
+            font-weight: bold; /* 字体加粗 */
+        }
+        /* 输入框和下拉菜单样式 */
+        input[type="text"], input[type="password"], select {
+            width: calc(100% - 16px); /* 宽度减少，两边留白一致 */
+            padding: 8px; /* 内边距 */
+            margin-bottom: 16px; /* 底部外边距 */
+            border: 1px solid #ccc; /* 边框 */
+            border-radius: 4px; /* 圆角边框 */
+        }
+        /* 性别和兴趣爱好选项的容器样式 */
+        .gender-options, .hobby-options {
+            margin-bottom: 16px; /* 底部外边距 */
+        }
+        /* 性别和兴趣爱好的选项标签样式 */
+        .gender-options label, .hobby-options label {
+            margin-right: 10px; /* 右边距 */
+            font-weight: normal; /* 字体不加粗 */
+        }
+        /* 提交按钮样式 */
+        input[type="submit"] {
+            width: 100%; /* 宽度占满父容器 */
+            padding: 10px; /* 内边距 */
+            background-color: #28a745; /* 背景颜色 */
+            color: #fff; /* 文字颜色 */
+            border: none; /* 去除边框 */
+            border-radius: 4px; /* 圆角边框 */
+            cursor: pointer; /* 鼠标指针为手型 */
+        }
+        /* 提交按钮的悬停效果 */
+        input[type="submit"]:hover {
+            background-color: #218838; /* 悬停时的背景颜色 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 表单开始 -->
+    <form action="#" method="post">
+        <!-- 头部 -->
+        <header>
+            <h1>注册表单</h1> <!-- 标题 -->
+            <p>请填写以下信息完成注册</p> <!-- 描述 -->
+        </header>
+
+        <!-- 用户名输入 -->
+        <label for="username">用户名:</label>
+        <input type="text" id="username" name="username" required>
+
+        <!-- 密码输入 -->
+        <label for="password">密码:</label>
+        <input type="password" id="password" name="password" required>
+
+        <!-- 性别选择 -->
+        <div class="gender-options">
+            <label>性别:</label>
+            <label><input type="radio" name="gender" value="male" required> 男</label>
+            <label><input type="radio" name="gender" value="female"> 女</label>
+        </div>
+
+        <!-- 兴趣爱好选择 -->
+        <div class="hobby-options">
+            <label>兴趣爱好:</label>
+            <label><input type="checkbox" name="hobby" value="singing"> 唱</label>
+            <label><input type="checkbox" name="hobby" value="jumping"> 跳</label>
+            <label><input type="checkbox" name="hobby" value="music"> rap</label>
+            <label><input type="checkbox" name="hobby" value="basketball"> 篮球</label>
+        </div>
+
+        <!-- 国家选择 -->
+        <label for="country">国家:</label>
+        <select id="country" name="country" required>
+            <option value="">请选择国家</option>
+            <option value="china">中国</option>
+            <option value="usa">美国</option>
+            <option value="japan">日本</option>
+            <option value="germany">德国</option>
+            <option value="france">法国</option>
+            <option value="other">其他</option>
+        </select>
+
+        <!-- 提交按钮 -->
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>
