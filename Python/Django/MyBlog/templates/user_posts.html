@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="title is-1">我的文章</h1>
+    {% for post in user_posts %}
+        <div class="card mb-5">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-4">{{ post.title }}</p>
+                        <p class="subtitle is-6">发布于：{{ post.created_at|date:"Y-m-d H:i" }}</p>
+                    </div>
+                </div>
+                <div class="content">
+                    {{ post.content|truncatewords:30 }}
+                    <br>
+                    <a href="{% url 'post_detail' post.id %}" class="button is-link is-small">阅读全文</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

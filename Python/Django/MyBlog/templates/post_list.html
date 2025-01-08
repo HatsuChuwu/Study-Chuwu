@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="title is-1">文章列表</h1>
+    {% for post in page_obj %}
+        <div class="card mb-5">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-4">{{ post.title }}</p>
+                        <p class="subtitle is-6">作者：{{ post.author.username }} | 发布于：{{ post.created_at|date:"Y-m-d H:i" }}</p>
+                    </div>
+                </div>
+                <div class="content">
+                    {{ post.content|truncatewords:30 }}
+                    <br>
+                    <a href="{% url 'post_detail' post.id %}" class="button is-link is-small">阅读全文</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    <!-- 分页 -->
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}" class="pagination-previous">上一页</a>
+        {% endif %}
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="pagination-next">下一页</a>
+        {% endif %}
+
+        <ul class="pagination-list">
+            {% for num in page_obj.paginator.page_range %}
+                <li>
+                    <a href="?page={{ num }}" class="pagination-link {% if page_obj.number == num %}is-current{% endif %}">
+                        {{ num }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+{% endblock %}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBlog</title>
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+<body>
+<!-- 导航栏 -->
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="{% url 'post_list' %}">
+            <strong>MyBlog</strong>
+        </a>
+    </div>
+
+    <div class="navbar-menu">
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    {% if user.is_authenticated %}
+                        <a class="button is-primary" href="{% url 'post_create' %}">
+                            <strong>新建文章</strong>
+                        </a>
+                        <!-- 将登出按钮改为表单 -->
+                        <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="button is-light">退出</button>
+                        </form>
+                    {% else %}
+                        <a class="button is-primary" href="{% url 'login' %}">
+                            <strong>登录</strong>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <!-- 消息提示 -->
+    {% if messages %}
+        <div class="container mt-4">
+            {% for message in messages %}
+                <div class="notification is-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- 主要内容 -->
+    <section class="section">
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>MyBlog</strong> © 2023. Powered by Django and Bulma.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bulma JS -->
+    <script>
+        // 控制模态框的显示和隐藏
+        document.addEventListener('DOMContentLoaded', () => {
+            // 获取所有模态框关闭按钮
+            const closeButtons = document.querySelectorAll('.modal .delete, .modal .modal-background');
+            closeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal');
+                    modal.classList.remove('is-active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
