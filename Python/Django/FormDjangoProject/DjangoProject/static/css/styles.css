@@ -1,0 +1,153 @@
+/* 全局样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f3f3f3; /* 设置与图片色调一致的背景色 */
+    background-image: url('images/bg1.png'); /* 默认背景图片 */
+    background-size: cover; /* 背景图片铺满整个页面 */
+    background-position: center; /* 背景图片居中 */
+    position: relative; /* 相对定位 */
+    transition: background-image 4s ease-in-out; /* 使用 background-image 过渡，时间调整为2秒 */
+}
+
+/* 隐藏的图片预加载 */
+body::before {
+    display: none;
+}
+
+/* 切换按钮容器 */
+.toggle-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 切换按钮 */
+.toggle-button {
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* 切换按钮的滑块 */
+.toggle-button::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+/* 切换按钮激活状态 */
+.toggle-button.active {
+    background-color: #55c5ea;
+}
+
+.toggle-button.active::before {
+    transform: translateX(20px);
+}
+
+/* 表单容器 */
+.form-container {
+    background-color: rgba(255, 255, 255, 0.7); /* 表单背景为白色，透明度90% */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* 添加阴影效果 */
+    width: 300px; /* 固定宽度 */
+    text-align: left; /* 表单内容左对齐 */
+    position: relative; /* 相对定位 */
+}
+
+/* 标题样式 */
+.form-container h1 {
+    margin: 0 0 10px 0; /* 上右下左 */
+    font-size: 24px;
+    color: #333;
+    overflow: hidden; /* 隐藏溢出文本 */
+    white-space: nowrap; /* 防止文本换行 */
+    border-right: 2px solid transparent; /* 初始光标透明 */
+    animation: typing 3.5s steps(30, end) forwards 2s; /* 动画结束后保持最后一帧 */
+}
+
+/* 打字机动画 */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* 输入框容器 */
+.input-group {
+    margin-bottom: 16px;
+}
+
+/* 输入框样式 */
+.input-group input {
+    width: 100%; /* 宽度自适应 */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+}
+
+/* 输入框占位符样式 */
+.input-group input::placeholder {
+    color: #aaa;
+}
+
+/* 按钮样式 */
+.action-button {
+    width: 100%; /* 宽度自适应 */
+    padding: 10px;
+    background-color: #55c5ea;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px; /* 添加底部边距 */
+}
+
+.action-button:hover {
+    background-color: #77e8fe;
+}
+
+/* 链接样式 */
+.form-container a {
+    color: #55c5ea;
+    text-decoration: none;
+}
+
+.form-container a:hover {
+    text-decoration: underline;
+}
+
+/* 自定义表格样式 */
+.table th {
+    background-color: #55c5ea;  /* 表头背景色 */
+    color: white;  /* 表头文字颜色 */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(85, 197, 234, 0.1);  /* 斑马纹奇数行背景色 */
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(85, 197, 234, 0.2);  /* 悬停行背景色 */
+}

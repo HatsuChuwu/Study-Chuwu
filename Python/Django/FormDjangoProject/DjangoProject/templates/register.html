@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册</title>
+    <!-- 新 Bootstrap4 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/twitter-bootstrap/4.6.1/css/bootstrap.min.css">
+    <!-- 自定义 CSS 文件 -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- 切换按钮 -->
+    <div class="toggle-container">
+        <div class="toggle-button" id="toggle-button"></div>
+    </div>
+
+    <!-- 注册表单 -->
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="form-container">
+            <h1>用户注册</h1>
+            <form action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" name="username" class="form-control" placeholder="用户名" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" class="form-control" placeholder="密码" required>
+                </div>
+                <button type="submit" class="action-button">注册</button>
+            </form>
+            <p>已有账号？<a href="{% url 'login' %}">立即登录</a></p>
+        </div>
+    </div>
+
+    <!-- 生成静态文件URL -->
+    <script>
+        const imageUrls = [
+            "{% static 'images/bg1.png' %}",
+            "{% static 'images/bg2.png' %}",
+            "{% static 'images/bg3.png' %}",
+            "{% static 'images/bg4.png' %}",
+            "{% static 'images/bg5.png' %}"
+        ];
+    </script>
+    <!-- 引入 JavaScript 文件 -->
+    <script src="{% static 'js/toggle.js' %}"></script>
+    <script src="{% static 'js/preload.js' %}"></script>
+</body>
+</html>

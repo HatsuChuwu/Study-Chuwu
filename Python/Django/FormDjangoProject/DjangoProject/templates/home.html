@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页</title>
+    <!-- 新 Bootstrap4 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/twitter-bootstrap/4.6.1/css/bootstrap.min.css">
+    <!-- 自定义 CSS 文件 -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- 切换按钮 -->
+    <div class="toggle-container">
+        <div class="toggle-button" id="toggle-button"></div>
+    </div>
+
+    <!-- 主页内容 -->
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="form-container">
+            <h1>欢迎回来，{{ username }}！</h1>
+
+            <!-- 用户列表表格 -->
+            <h2>已注册用户列表</h2>
+            <div class="table-responsive">  <!-- 响应式表格容器 -->
+                <table class="table table-bordered table-striped table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">用户名</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>  <!-- 显示行号 -->
+                            <td>{{ user.username }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">注销</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 生成静态文件URL -->
+    <script>
+        const imageUrls = [
+            "{% static 'images/bg1.png' %}",
+            "{% static 'images/bg2.png' %}",
+            "{% static 'images/bg3.png' %}",
+            "{% static 'images/bg4.png' %}",
+            "{% static 'images/bg5.png' %}"
+        ];
+    </script>
+    <!-- 引入 JavaScript 文件 -->
+    <script src="{% static 'js/toggle.js' %}"></script>
+    <script src="{% static 'js/preload.js' %}"></script>
+</body>
+</html>
