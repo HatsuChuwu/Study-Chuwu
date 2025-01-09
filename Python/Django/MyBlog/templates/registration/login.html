@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="title is-1">😶‍🌫️登录😶‍🌫️</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="field">
+            <label class="label">用户名</label>
+            <div class="control">
+                <input class="input" type="text" name="username" required>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">密码</label>
+            <div class="control">
+                <input class="input" type="password" name="password" required>
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-primary">登录</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="title is-1">{{ post.title }}</h1>
+    <p class="subtitle is-6">作者：{{ post.author.username }} | 发布于：{{ post.created_at|date:"Y-m-d H:i" }} | 最后更新：{{ post.updated_at|date:"Y-m-d H:i" }}</p>
+    <div class="content">
+    {{ post.content|safe }}  <!-- 使用 safe 过滤器 -->
+    </div>
+
+    {% if user == post.author %}
+        <div class="buttons mt-5">
+            <a href="{% url 'post_update' post.id %}" class="button is-primary">编辑</a>
+            <a href="{% url 'post_delete' post.id %}" class="button is-danger">删除</a>
+        </div>
+    {% endif %}
+{% endblock %}

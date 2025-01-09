@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="title is-1 has-text-centered animate__animated animate__fadeInDown">存在感消失的地方|ω•`)</h1>
+
+    <!-- 时间线布局 -->
+    <div class="timeline">
+        {% for post in page_obj %}
+        <div class="timeline-item animate__animated animate__fadeInLeft">
+            <div class="timeline-marker is-icon">
+                <i class="fas fa-circle"></i>
+            </div>
+            <div class="timeline-content">
+                <p class="heading">{{ post.created_at|date:"Y-m-d H:i" }}</p>
+                <div class="box">
+                    <h2 class="title is-4">{{ post.title }}</h2>
+                    <p class="subtitle is-6">作者：{{ post.author.username }}</p>
+                    <p>{{ post.content|truncatewords:30|safe }}</p>
+                    <br>
+                    <div class="buttons">
+                        <a href="{% url 'post_detail' post.id %}" class="button is-link is-small">
+                            阅读全文
+                        </a>
+                        {% if user == post.author %}
+                        <a href="{% url 'post_update' post.id %}" class="button is-primary is-small">
+                            编辑
+                        </a>
+                        <a href="{% url 'post_delete' post.id %}" class="button is-danger is-small">
+                            删除
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- 分页 -->
+    <nav class="pagination is-centered animate__animated animate__fadeInUp" role="navigation" aria-label="pagination">
+        {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}" class="pagination-previous">
+            上一页
+        </a>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="pagination-next">
+            下一页
+        </a>
+        {% endif %}
+
+        <ul class="pagination-list">
+            {% for num in page_obj.paginator.page_range %}
+            <li>
+                <a href="?page={{ num }}" class="pagination-link {% if page_obj.number == num %}is-current{% endif %}">
+                    {{ num }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+</div>
+{% endblock %}
