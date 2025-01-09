@@ -1,0 +1,87 @@
+<!-- templates/dashboard.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>仪表盘</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">学生信息仪表盘 <i class="fas fa-tachometer-alt"></i></h1>
+
+        <!-- 学生总数 -->
+        <div class="card mb-4 shadow">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-users"></i> 学生总数</h5>
+                <p class="card-text display-4">{{ total_students }}</p>
+            </div>
+        </div>
+
+        <!-- 班级分布 -->
+        <div class="card mb-4 shadow">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-chart-bar"></i> 班级分布</h5>
+                <canvas id="classDistributionChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+
+        <!-- 最近添加的学生 -->
+        <div class="card mb-4 shadow">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-user-plus"></i> 最近添加的学生</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>学生编号</th>
+                            <th>学生姓名</th>
+                            <th>班级</th>
+                            <th>简介</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in recent_students %}
+                        <tr>
+                            <td>{{ student.stuId }}</td>
+                            <td>{{ student.stuName }}</td>
+                            <td>{{ student.stuClass }}</td>
+                            <td>{{ student.stuIntro }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 班级分布图表
+        const classDistributionCtx = document.getElementById('classDistributionChart').getContext('2d');
+        const classDistributionChart = new Chart(classDistributionCtx, {
+            type: 'bar',  // 柱状图
+            data: {
+                labels: {{ class_names|safe }},  // 班级名称
+                datasets: [{
+                    label: '学生数量',
+                    data: {{ class_counts|safe }},  // 每个班级的学生数量
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
