@@ -1,0 +1,143 @@
+/* 全局样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('images/bg2.png'); /* 大背景图片 */
+    background-size: cover; /* 背景图片铺满整个页面 */
+    background-position: center; /* 背景图片居中 */
+    position: relative; /* 相对定位 */
+}
+
+/* QQ Logo样式 */
+.qq-logo {
+    position: absolute; /* 绝对定位 */
+    top: 20px; /* 距离顶部20px */
+    left: 20px; /* 距离左侧20px */
+    width: 100px; /* 设置Logo宽度 */
+    height: auto; /* 高度自适应 */
+}
+
+/* 表单容器 */
+.qq-register {
+    background-color: rgba(255, 255, 255, 0.9); /* 表单背景为白色，透明度90% */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: left; /* 表单内容左对齐 */
+    position: relative; /* 相对定位 */
+}
+
+/* 打字机动画 */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* 标题样式 */
+.qq-register h1 {
+    margin: 0 0 10px 0; /* 上右下左 */
+    font-size: 24px;
+    color: #333;
+    overflow: hidden; /* 隐藏溢出文本 */
+    white-space: nowrap; /* 防止文本换行 */
+    border-right: 2px solid transparent; /* 初始光标透明 */
+    animation: typing 3.5s steps(30, end) forwards; /* 动画结束后保持最后一帧 */
+}
+
+/* 次标题样式 */
+.qq-register h2 {
+    margin: 0 0 20px 0; /* 上右下左 */
+    font-size: 14px;
+    color: #666;
+    overflow: hidden; /* 隐藏溢出文本 */
+    white-space: nowrap; /* 防止文本换行 */
+    border-right: 2px solid transparent; /* 初始光标透明 */
+    animation: typing 2.5s steps(30, end) forwards; /* 动画结束后保持最后一帧 */
+    animation-delay: 3.5s; /* 延迟动画，等待h1动画完成 */
+}
+
+/* 输入框容器 */
+.input-group {
+    margin-bottom: 16px;
+}
+
+/* 输入框样式 */
+.input-group input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+}
+
+/* 输入框占位符样式 */
+.input-group input::placeholder {
+    color: #aaa;
+}
+
+/* 手机号前缀选择样式 */
+.phone-prefix {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.phone-prefix select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.phone-prefix input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+}
+
+/* 同意协议单选框样式 */
+.agree-terms {
+    margin-bottom: 16px;
+}
+
+.agree-terms label {
+    font-size: 12px;
+    color: #666;
+}
+
+/* 登录按钮样式 */
+.login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #55c5ea;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #77e8fe;
+}
+
+/* Footer样式 */
+footer {
+    position: absolute; /* 绝对定位 */
+    bottom: 10px; /* 距离底部10px */
+    width: 100%; /* 宽度占满页面 */
+    text-align: center; /* 文字居中 */
+    font-size: 12px;
+    color: #666;
+}

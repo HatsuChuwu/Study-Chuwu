@@ -1,0 +1,59 @@
+/* 设置页面整体布局 */
+body {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    height: 100vh; /* 设置页面高度为视口高度 */
+    background-color: #f0f0f0; /* 背景颜色 */
+    font-family: Arial, sans-serif; /* 字体 */
+}
+
+/* 计算器容器样式 */
+.calculator {
+    background-color: #fff; /* 背景颜色 */
+    padding: 20px; /* 内边距 */
+    border-radius: 10px; /* 圆角 */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 阴影 */
+    width: 300px; /* 设置固定宽度 */
+}
+
+/* 显示框样式 */
+#display {
+    width: 100%; /* 宽度100% */
+    height: 50px; /* 高度 */
+    font-size: 24px; /* 字体大小 */
+    text-align: right; /* 文本右对齐 */
+    padding: 10px; /* 内边距 */
+    margin-bottom: 10px; /* 下边距 */
+    border: 1px solid #ccc; /* 边框 */
+    border-radius: 5px; /* 圆角 */
+    box-sizing: border-box; /* 盒模型 */
+}
+
+/* 按钮区域样式 */
+.buttons {
+    display: grid; /* 使用网格布局 */
+    grid-template-columns: repeat(4, 1fr); /* 4列，每列等宽 */
+    gap: 10px; /* 按钮之间的间距 */
+}
+
+/* 按钮样式 */
+button {
+    padding: 20px; /* 内边距 */
+    font-size: 18px; /* 字体大小 */
+    border: none; /* 无边框 */
+    border-radius: 5px; /* 圆角 */
+    background-color: #f9f9f9; /* 背景颜色 */
+    cursor: pointer; /* 鼠标指针样式 */
+    transition: background-color 0.3s; /* 背景颜色过渡效果 */
+}
+
+/* 按钮悬停效果 */
+button:hover {
+    background-color: #ddd; /* 背景颜色变浅 */
+}
+
+/* 按钮点击效果 */
+button:active {
+    background-color: #ccc; /* 背景颜色更深 */
+}
