@@ -1,44 +1,162 @@
+{% load static %}  <!-- 加载静态文件标签 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyBlog</title>
+    <title>MyBlog🤗</title>
     <!-- Bulma CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-</head>
-<body>
-<!-- 导航栏 -->
-<nav class="navbar is-light" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <a class="navbar-item" href="{% url 'post_list' %}">
-            <strong>MyBlog</strong>
-        </a>
-    </div>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- 自定义 CSS -->
+    <style>
+        /* 导航栏标题动画 */
+        @keyframes colorChange {
+            0% { color: #3273dc; }
+            25% { color: #f8ef3b; }
+            75% { color: #63fd83; }
+            100% { color: #3273dc; }
+        }
+        .navbar-brand span {
+            animation: colorChange 3s infinite;
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem; /* 放大字号 */
+        }
 
-    <div class="navbar-menu">
-        <div class="navbar-end">
-            <div class="navbar-item">
-                <div class="buttons">
-                    {% if user.is_authenticated %}
-                        <a class="button is-primary" href="{% url 'post_create' %}">
-                            <strong>新建文章</strong>
-                        </a>
-                        <!-- 将登出按钮改为表单 -->
-                        <form action="{% url 'logout' %}" method="post" style="display: inline;">
-                            {% csrf_token %}
-                            <button type="submit" class="button is-light">退出</button>
-                        </form>
-                    {% else %}
-                        <a class="button is-primary" href="{% url 'login' %}">
-                            <strong>登录</strong>
-                        </a>
-                    {% endif %}
+        /* 时间线布局 */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #3273dc;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 100%; /* 单列布局 */
+        }
+
+        .timeline-marker {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3273dc;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            margin-left: -10px; /* 居中 */
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-left: 40px; /* 单列布局调整 */
+        }
+
+        /* 动画延迟 */
+        .animate__animated {
+            animation-duration: 1s;
+        }
+
+        .timeline-item {
+            animation-delay: 0.2s;
+        }
+
+        /* 响应式优化 */
+        @media (max-width: 768px) {
+            .timeline-marker {
+                width: 15px;
+                height: 15px;
+                margin-left: -7.5px;
+            }
+            .timeline-content {
+                margin-left: 20px;
+            }
+        }
+
+        /* 全局背景 */
+        body {
+            background-image: url("{% static 'images/background.png' %}"); /* 背景图片 */
+            background-size: cover; /* 背景图片铺满 */
+            background-position: center; /* 背景图片居中 */
+            background-attachment: fixed; /* 背景图片固定 */
+            min-height: 100vh; /* 确保背景覆盖整个页面 */
+        }
+
+        /* 登录页面不需要背景 */
+        body.login-page {
+            background: none; /* 去掉背景 */
+        }
+
+        /* 主要内容区域 */
+        .section {
+            background-color: rgba(255, 255, 255, 0.7); /* 半透明白色背景 */
+            border-radius: 10px; /* 圆角 */
+            margin: 20px auto; /* 居中 */
+            max-width: 1200px; /* 最大宽度 */
+            padding: 20px; /* 内边距 */
+        }
+    </style>
+</head>
+<body class="{% if request.path == '/login/' %}login-page{% endif %}">
+    <!-- 导航栏 -->
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{% url 'post_list' %}">
+                <span class="icon" style="margin-right: 10px;">  <!-- 添加 margin-right -->
+                    <i class="fas fa-blog"></i>
+                </span>
+                <span>MyBlog🤗</span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        {% if user.is_authenticated %}
+                            <a class="button is-primary" href="{% url 'post_create' %}">
+                                <strong>新建文章</strong>
+                            </a>
+                            <!-- 将登出按钮改为表单 -->
+                            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="button is-light">退出</button>
+                            </form>
+                        {% else %}
+                            <a class="button is-primary" href="{% url 'login' %}">
+                                <strong>登录</strong>
+                            </a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
     <!-- 消息提示 -->
     {% if messages %}
@@ -63,7 +181,7 @@
     <footer class="footer">
         <div class="content has-text-centered">
             <p>
-                <strong>MyBlog</strong> © 2023. Powered by Django and Bulma.
+                <strong>MyBlog</strong> © 2025. Powered by Django and Bulma.
             </p>
         </div>
     </footer>
