@@ -19,6 +19,25 @@
             justify-content: center;
             margin: 0;
             padding: 20px;
+            overflow: hidden; /* 防止樱花飘出页面 */
+            position: relative;
+        }
+
+        /* 樱花飘落效果 */
+        .sakura {
+            position: absolute;
+            top: -50px;
+            animation: fall linear infinite;
+            color: pink; /* 樱花的颜色 */
+            font-size: 24px; /* 樱花的大小 */
+            user-select: none; /* 防止用户选中 */
+            z-index: 0; /* 确保樱花在背景层 */
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
         }
 
         /* 容器样式 */
@@ -26,9 +45,11 @@
             background: white;
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* 阴影效果 */
             max-width: 500px;
             width: 100%;
+            position: relative;
+            z-index: 1; /* 确保容器在樱花上方 */
         }
 
         /* 标题样式 */
@@ -43,14 +64,14 @@
         /* 表单输入框样式 */
         .form-control {
             border-radius: 8px;
-            border: 1px solid #ddd;
+            border: 1px solid #027d81;
             padding: 10px;
             font-size: 1rem;
         }
 
         /* 按钮样式 */
         .btn-primary {
-            background-color: #6a11cb;
+            background-color: #e98bf8;
             border: none;
             border-radius: 8px;
             padding: 10px 20px;
@@ -60,18 +81,18 @@
         }
 
         .btn-primary:hover {
-            background-color: #2575fc;
+            background-color: #f8e588;
         }
 
         /* 链接样式 */
         a {
-            color: #6a11cb;
+            color: #ffa36b;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         a:hover {
-            color: #2575fc;
+            color: #27f8ff;
         }
 
         /* 消息提示样式 */
@@ -84,26 +105,23 @@
 
         .alert-info {
             background-color: #e9f5ff;
-            color: #2575fc;
+            color: #4a83ff;
             border: 1px solid #b3d8ff;
         }
 
-        .alert-error {
-            background-color: #ffebee;
-            color: #c62828;
-            border: 1px solid #ffcdd2;
-        }
     </style>
 </head>
 <body>
+    <!-- 樱花飘落效果 -->
+    <div id="sakura-container"></div>
+
+    <!-- 登录表单 -->
     <div class="container mt-5">
         <h2 class="text-center">😎管理员登录😎</h2>
-
-        <!-- 登录表单 -->
         <form method="post" class="mt-4">
             {% csrf_token %}
             <div class="mb-3">
-                <label for="username" class="form-label">管理员名</label>
+                <label for="username" class="form-label">管理员𝘼𝙘𝙘𝙤𝙪𝙣𝙩</label>
                 <input type="text" class="form-control" id="username" name="username" required>
             </div>
             <div class="mb-3">
@@ -115,8 +133,43 @@
 
         <!-- 普通用户登录链接 -->
         <div class="mt-3 text-center">
-            <p>普通用户登录？<a href="{% url 'user_login' %}">去用户登录</a></p>
+            <p>普通用户登录？<a href="{% url 'user_login' %}">→去用户登录</a></p>
         </div>
+
+        <!-- 消息提示 -->
+        <div class="alert alert-info">
+            生活就是这样( ´･･)ﾉ(._.`) 要充满信心(o-ωｑ)).oO
+        </div>
+        <div class="sakura" style="display: none;"></div>
     </div>
+
+    <!-- 樱花飘落的 JavaScript -->
+    <script>
+        // 樱花飘落效果
+        const sakuraContainer = document.getElementById('sakura-container');
+
+        function createSakura() {
+            const sakura = document.createElement('div');
+            sakura.innerHTML = '🌸'; // 樱花图案
+            sakura.classList.add('sakura');
+
+            // 随机设置樱花的初始位置和动画时长
+            sakura.style.left = Math.random() * 100 + 'vw';
+            sakura.style.animationDuration = Math.random() * 3 + 2 + 's'; // 2-5秒
+            sakura.style.opacity = (Math.random() * 0.5 + 0.5).toString()
+            sakura.style.transform = `scale(${Math.random() * 0.5 + 0.7})`; // 随机大小
+
+            // 将樱花添加到容器中
+            sakuraContainer.appendChild(sakura);
+
+            // 樱花落地后移除
+            setTimeout(() => {
+                sakura.remove();
+            }, 5000); // 5秒后移除
+        }
+
+        // 每 300 毫秒创建一个樱花
+        setInterval(createSakura, 300);
+    </script>
 </body>
 </html>
