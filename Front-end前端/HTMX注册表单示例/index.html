@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⛄注册</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="htmx.min.js"></script>
+    <style>
+        /* 添加动画相关的CSS */
+        .fade-in { animation: fadeIn 0.3s ease-in; }
+        .shake { animation: shake 0.5s ease-in-out; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .input-error { border-color: #ff4444 !important; }
+        .error-message {
+            color: #ff4444;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+        .error-message.show { display: block; }
+    </style>
+</head>
+<body>
+    <img src="images/icon.webp" alt="Logo" class="logo fade-in">
+
+    <div class="register fade-in">
+        <h1>欢迎注册🥰</h1>
+        <h2>每一天，乐在其中</h2>
+
+        <form hx-post="/register" hx-target="this" hx-swap="outerHTML">
+            <div class="input-group">
+                <input type="text" 
+                       id="nickname" 
+                       name="nickname"
+                       placeholder="请输入昵称" 
+                       required
+                       minlength="2"
+                       hx-validate="true"
+                       hx-post="/validate/nickname"
+                       hx-trigger="keyup changed delay:500ms"
+                       hx-target="#nickname-error">
+                <div id="nickname-error" class="error-message"></div>
+            </div>
+
+            <div class="input-group">
+                <input type="password" 
+                       id="password" 
+                       name="password"
+                       placeholder="请输入密码" 
+                       required
+                       minlength="8"
+                       hx-validate="true"
+                       hx-post="/validate/password"
+                       hx-trigger="keyup changed delay:500ms"
+                       hx-target="#password-error">
+                <div id="password-error" class="error-message"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="phone">手机号</label>
+                <div class="phone-prefix">
+                    <select id="phone-prefix" name="phone_prefix">
+                        <option value="+86">+86</option>
+                        <option value="+1">+1</option>
+                        <option value="+81">+81</option>
+                    </select>
+                    <input type="tel" 
+                           id="phone" 
+                           name="phone"
+                           placeholder="请输入手机号" 
+                           required
+                           pattern="[0-9]{11}"
+                           hx-validate="true"
+                           hx-post="/validate/phone"
+                           hx-trigger="keyup changed delay:500ms"
+                           hx-target="#phone-error">
+                </div>
+                <div id="phone-error" class="error-message"></div>
+            </div>
+
+            <div class="agree-terms">
+                <label>
+                    <input type="checkbox" 
+                           name="agree" 
+                           required 
+                           hx-validate="true"
+                           hx-post="/validate/agree"
+                           hx-trigger="change"
+                           hx-target="#agree-error">
+                    我已阅读并同意<a href="#" class="terms-link">服务协议</a>
+                </label>
+                <div id="agree-error" class="error-message"></div>
+            </div>
+
+            <button class="login-button"
+                    type="submit"
+                    hx-indicator=".htmx-indicator">
+                <span class="htmx-indicator" style="display:none">注册中...</span>
+                <span>立即注册</span>
+            </button>
+        </form>
+    </div>
+
+    <footer class="fade-in">
+        @copyright: 2025Chuwu
+    </footer>
+
+    <script>
+        // 添加表单验证和动画效果
+        document.body.addEventListener('htmx:validation:validate', function(evt) {
+            const input = evt.target;
+            const errorDiv = document.querySelector(`#${input.id}-error`);
+            
+            if (!input.checkValidity()) {
+                input.classList.add('input-error');
+                input.classList.add('shake');
+                if (errorDiv) {
+                    errorDiv.textContent = input.validationMessage;
+                    errorDiv.classList.add('show');
+                }
+                setTimeout(() => input.classList.remove('shake'), 500);
+            } else {
+                input.classList.remove('input-error');
+                if (errorDiv) {
+                    errorDiv.classList.remove('show');
+                }
+            }
+        });
+
+        // 表单提交成功动画
+        document.body.addEventListener('htmx:afterRequest', function(evt) {
+            if (evt.detail.successful) {
+                evt.target.classList.add('fade-in');
+            }
+        });
+
+        // 链接点击动画
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                this.classList.add('fade-in');
+                setTimeout(() => this.classList.remove('fade-in'), 300);
+            });
+        });
+    </script>
+</body>
+</html>

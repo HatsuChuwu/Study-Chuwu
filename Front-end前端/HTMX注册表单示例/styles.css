@@ -1,0 +1,254 @@
+/* 全局样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('images/bg2.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Logo样式 */
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* 表单容器 */
+.register {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    text-align: left;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+}
+
+/* 标题样式 */
+.register h1 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.register h1:hover {
+    color: #55c5ea;
+}
+
+/* 次标题样式 */
+.register h2 {
+    margin: 0 0 20px 0;
+    font-size: 14px;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+/* 输入框容器 */
+.input-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* 标签样式 */
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+/* 输入框样式 */
+.input-group input {
+    width: calc(100% - 22px);
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.input-group input:focus {
+    border-color: #55c5ea;
+    box-shadow: 0 0 0 3px rgba(85, 197, 234, 0.2);
+}
+
+/* 输入错误状态 */
+.input-group input.input-error {
+    border-color: #ff4444;
+    box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.2);
+}
+
+/* 错误信息样式 */
+.error-message {
+    color: #ff4444;
+    font-size: 12px;
+    margin-top: 4px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.error-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 手机号前缀选择样式 */
+.phone-prefix {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.phone-prefix select {
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.phone-prefix select:focus {
+    border-color: #55c5ea;
+    box-shadow: 0 0 0 3px rgba(85, 197, 234, 0.2);
+}
+
+.phone-prefix input {
+    flex: 1;
+}
+
+/* 同意协议样式 */
+.agree-terms {
+    margin-bottom: 20px;
+}
+
+.agree-terms label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #666;
+    cursor: pointer;
+}
+
+.agree-terms input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.agree-terms a {
+    color: #55c5ea;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.agree-terms a:hover {
+    color: #77e8fe;
+    text-decoration: underline;
+}
+
+/* 登录按钮样式 */
+.login-button {
+    width: 100%;
+    padding: 14px;
+    background-color: #55c5ea;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #77e8fe;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(85, 197, 234, 0.3);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+/* 加载指示器样式 */
+.htmx-indicator {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.htmx-request .htmx-indicator {
+    opacity: 1;
+}
+
+.htmx-request.login-button {
+    background-color: #77e8fe;
+    pointer-events: none;
+}
+
+/* Footer样式 */
+footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    transition: opacity 0.3s ease;
+}
+
+footer:hover {
+    opacity: 0.8;
+}
+
+/* 响应式适配 */
+@media (max-width: 480px) {
+    .register {
+        width: 90%;
+        max-width: 320px;
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .logo {
+        width: 80px;
+    }
+}
+
+/* 禁用状态样式 */
+input:disabled, 
+select:disabled, 
+button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
