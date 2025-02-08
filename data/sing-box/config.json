@@ -1,0 +1,1065 @@
+{
+  "log": {
+    "disabled": false,
+    "level": "debug",
+    "output": "",
+    "timestamp": false
+  },
+  "experimental": {
+    "clash_api": {
+      "external_controller": "127.0.0.1:20123",
+      "external_ui": "",
+      "external_ui_download_url": "",
+      "external_ui_download_detour": "🎯 全球直连",
+      "secret": "ID_klujq3pf",
+      "default_mode": "rule",
+      "access_control_allow_origin": [
+        "*"
+      ],
+      "access_control_allow_private_network": false
+    },
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db",
+      "cache_id": "",
+      "store_fakeip": true,
+      "store_rdrc": true,
+      "rdrc_timeout": "7d"
+    }
+  },
+  "inbounds": [
+    {
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "127.0.0.1",
+      "listen_port": 20122,
+      "tcp_fast_open": false,
+      "tcp_multi_path": false,
+      "udp_fragment": false,
+      "users": []
+    },
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "interface_name": "chuwuTUN",
+      "address": [
+        "172.18.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
+      "mtu": 9000,
+      "auto_route": true,
+      "strict_route": true,
+      "endpoint_independent_nat": false,
+      "stack": "gvisor",
+      "sniff": true
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "🚀 节点选择",
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "🎈 自动选择",
+        "剩余流量：102.1 GB",
+        "套餐到期：长期有效",
+        "🇭🇰 香港 01",
+        "🇭🇰 香港 02",
+        "🇭🇰 香港 03",
+        "🇭🇰 香港 04",
+        "🇭🇰 香港 05",
+        "🇭🇰 香港 06",
+        "🇲🇴 澳门 01",
+        "🇨🇳 台湾 01",
+        "🇨🇳 台湾 02",
+        "🇸🇬 新加坡 01",
+        "🇸🇬 新加坡 02",
+        "🇸🇬 新加坡 03",
+        "🇸🇬 新加坡 04",
+        "🇸🇬 新加坡 05",
+        "🇯🇵 日本 01",
+        "🇯🇵 日本 02",
+        "🇯🇵 日本 03",
+        "🇯🇵 日本 04",
+        "🇯🇵 日本 05",
+        "🇺🇸 美国 01",
+        "🇺🇸 美国 02",
+        "🇺🇸 美国 03",
+        "🇺🇸 美国 04",
+        "🇵🇰 巴基斯坦 01",
+        "🇰🇷 韩国 01",
+        "🇮🇩 印尼 01",
+        "🇮🇹 意大利 01",
+        "🇹🇷 土耳其 01",
+        "🇫🇷 法国 01",
+        "🇦🇷 阿根廷 01",
+        "🇲🇾 马来西亚 01",
+        "🇦🇺 澳大利亚 01",
+        "🇬🇧 英国 01",
+        "🇩🇪 德国 01",
+        "🇸🇪 瑞典 01",
+        "🇮🇳 印度 01",
+        "🇳🇬 尼日利亚 01",
+        "🇳🇱 荷兰 01",
+        "🇷🇺 俄罗斯 01",
+        "🇹🇭 泰国 01"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🎈 自动选择",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 150,
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "剩余流量：102.1 GB",
+        "套餐到期：长期有效",
+        "🇭🇰 香港 01",
+        "🇭🇰 香港 02",
+        "🇭🇰 香港 03",
+        "🇭🇰 香港 04",
+        "🇭🇰 香港 05",
+        "🇭🇰 香港 06",
+        "🇲🇴 澳门 01",
+        "🇨🇳 台湾 01",
+        "🇨🇳 台湾 02",
+        "🇸🇬 新加坡 01",
+        "🇸🇬 新加坡 02",
+        "🇸🇬 新加坡 03",
+        "🇸🇬 新加坡 04",
+        "🇸🇬 新加坡 05",
+        "🇯🇵 日本 01",
+        "🇯🇵 日本 02",
+        "🇯🇵 日本 03",
+        "🇯🇵 日本 04",
+        "🇯🇵 日本 05",
+        "🇺🇸 美国 01",
+        "🇺🇸 美国 02",
+        "🇺🇸 美国 03",
+        "🇺🇸 美国 04",
+        "🇵🇰 巴基斯坦 01",
+        "🇰🇷 韩国 01",
+        "🇮🇩 印尼 01",
+        "🇮🇹 意大利 01",
+        "🇹🇷 土耳其 01",
+        "🇫🇷 法国 01",
+        "🇦🇷 阿根廷 01",
+        "🇲🇾 马来西亚 01",
+        "🇦🇺 澳大利亚 01",
+        "🇬🇧 英国 01",
+        "🇩🇪 德国 01",
+        "🇸🇪 瑞典 01",
+        "🇮🇳 印度 01",
+        "🇳🇬 尼日利亚 01",
+        "🇳🇱 荷兰 01",
+        "🇷🇺 俄罗斯 01",
+        "🇹🇭 泰国 01"
+      ]
+    },
+    {
+      "type": "direct",
+      "tag": "🎯 全球直连"
+    },
+    {
+      "type": "selector",
+      "tag": "🐟 漏网之鱼",
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "🚀 节点选择",
+        "🎯 全球直连"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "GLOBAL",
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "🚀 节点选择",
+        "🎈 自动选择",
+        "🎯 全球直连",
+        "🐟 漏网之鱼"
+      ]
+    },
+    {
+      "tag": "剩余流量：102.1 GB",
+      "type": "trojan",
+      "server": "cn1.cdn.xfltd-cdn.top",
+      "server_port": 12001,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "套餐到期：长期有效",
+      "type": "trojan",
+      "server": "cn1.cdn.xfltd-cdn.top",
+      "server_port": 12001,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇭🇰 香港 01",
+      "type": "trojan",
+      "server": "cn1.cdn.xfltd-cdn.top",
+      "server_port": 12001,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇭🇰 香港 02",
+      "type": "trojan",
+      "server": "cn1.cdn.xfltd-cdn.top",
+      "server_port": 12002,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇭🇰 香港 03",
+      "type": "trojan",
+      "server": "cn1.cdn.xfltd-cdn.top",
+      "server_port": 12003,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇭🇰 香港 04",
+      "type": "trojan",
+      "server": "cn1.cdn.xfltd-cdn.top",
+      "server_port": 12004,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇭🇰 香港 05",
+      "type": "trojan",
+      "server": "cn1.cdn.xfltd-cdn.top",
+      "server_port": 12005,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇭🇰 香港 06",
+      "type": "trojan",
+      "server": "cn1.cdn.xfltd-cdn.top",
+      "server_port": 12006,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇲🇴 澳门 01",
+      "type": "trojan",
+      "server": "cn1.cdn.xfltd-cdn.top",
+      "server_port": 12007,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇨🇳 台湾 01",
+      "type": "trojan",
+      "server": "cn1.cdn.xfltd-cdn.top",
+      "server_port": 12011,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇨🇳 台湾 02",
+      "type": "trojan",
+      "server": "cn1.cdn.xfltd-cdn.top",
+      "server_port": 12012,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇸🇬 新加坡 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12021,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇸🇬 新加坡 02",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12022,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇸🇬 新加坡 03",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12023,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇸🇬 新加坡 04",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12024,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇸🇬 新加坡 05",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12025,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇯🇵 日本 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12031,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇯🇵 日本 02",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12032,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇯🇵 日本 03",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12033,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇯🇵 日本 04",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12034,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇯🇵 日本 05",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12035,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12051,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 02",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12052,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 03",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12053,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇺🇸 美国 04",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12054,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇵🇰 巴基斯坦 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12077,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇰🇷 韩国 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12041,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇮🇩 印尼 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12061,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇮🇹 意大利 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12062,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇹🇷 土耳其 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12064,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇫🇷 法国 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12065,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇦🇷 阿根廷 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12066,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇲🇾 马来西亚 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12067,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇦🇺 澳大利亚 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12068,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇬🇧 英国 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12069,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇩🇪 德国 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12070,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇸🇪 瑞典 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12071,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇮🇳 印度 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12072,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇳🇬 尼日利亚 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12073,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇳🇱 荷兰 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12074,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇷🇺 俄罗斯 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12075,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "tag": "🇹🇭 泰国 01",
+      "type": "trojan",
+      "server": "cn2.cdn.xfltd-cdn.top",
+      "server_port": 12076,
+      "password": "d7b64c2a-c2c3-4948-8c6c-7ac88b280ff1",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      },
+      {
+        "clash_mode": "direct",
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "clash_mode": "global",
+        "outbound": "GLOBAL"
+      },
+      {
+        "protocol": "quic",
+        "outbound": "block"
+      },
+      {
+        "rule_set": [
+          "Category-Ads"
+        ],
+        "outbound": "block"
+      },
+      {
+        "rule_set": [
+          "GeoSite-Private"
+        ],
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "rule_set": [
+          "GeoSite-CN"
+        ],
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "rule_set": [
+          "GeoIP-Private"
+        ],
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "rule_set": [
+          "GeoIP-CN"
+        ],
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "rule_set": [
+          "GeoLocation-!CN"
+        ],
+        "outbound": "🚀 节点选择"
+      }
+    ],
+    "rule_set": [
+      {
+        "tag": "Category-Ads",
+        "type": "remote",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs",
+        "format": "binary",
+        "download_detour": "🎯 全球直连"
+      },
+      {
+        "tag": "GeoIP-Private",
+        "type": "remote",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/private.srs",
+        "format": "binary",
+        "download_detour": "🎯 全球直连"
+      },
+      {
+        "tag": "GeoSite-Private",
+        "type": "remote",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs",
+        "format": "binary",
+        "download_detour": "🎯 全球直连"
+      },
+      {
+        "tag": "GeoIP-CN",
+        "type": "remote",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
+        "format": "binary",
+        "download_detour": "🎯 全球直连"
+      },
+      {
+        "tag": "GeoSite-CN",
+        "type": "remote",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
+        "format": "binary",
+        "download_detour": "🎯 全球直连"
+      },
+      {
+        "tag": "GeoLocation-!CN",
+        "type": "remote",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
+        "format": "binary",
+        "download_detour": "🎯 全球直连"
+      }
+    ],
+    "auto_detect_interface": true,
+    "find_process": false,
+    "final": "🐟 漏网之鱼"
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "Local-DNS",
+        "address": "https://223.5.5.5/dns-query",
+        "address_resolver": "Local-DNS-Resolver",
+        "detour": "🎯 全球直连"
+      },
+      {
+        "tag": "Local-DNS-Resolver",
+        "address": "223.5.5.5",
+        "detour": "🎯 全球直连"
+      },
+      {
+        "tag": "Remote-DNS",
+        "address": "tls://8.8.8.8",
+        "address_resolver": "Remote-DNS-Resolver",
+        "detour": "🚀 节点选择"
+      },
+      {
+        "tag": "Remote-DNS-Resolver",
+        "address": "8.8.8.8",
+        "detour": "🚀 节点选择"
+      },
+      {
+        "tag": "FakeIP-DNS",
+        "address": "fakeip"
+      }
+    ],
+    "rules": [
+      {
+        "server": "Local-DNS",
+        "outbound": "any"
+      },
+      {
+        "server": "FakeIP-DNS",
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "domain_suffix": [
+              ".lan",
+              ".localdomain",
+              ".example",
+              ".invalid",
+              ".localhost",
+              ".test",
+              ".local",
+              ".home.arpa",
+              ".msftconnecttest.com",
+              ".msftncsi.com"
+            ],
+            "invert": true
+          },
+          {
+            "query_type": [
+              "A",
+              "AAAA"
+            ]
+          }
+        ]
+      },
+      {
+        "server": "Local-DNS",
+        "clash_mode": "direct"
+      },
+      {
+        "server": "Remote-DNS",
+        "clash_mode": "global"
+      },
+      {
+        "server": "Local-DNS",
+        "rule_set": [
+          "GeoSite-CN"
+        ]
+      },
+      {
+        "server": "Remote-DNS",
+        "rule_set": [
+          "GeoLocation-!CN"
+        ]
+      }
+    ],
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18"
+    },
+    "disable_cache": false,
+    "disable_expire": false,
+    "independent_cache": false,
+    "final": "Remote-DNS"
+  }
+}
