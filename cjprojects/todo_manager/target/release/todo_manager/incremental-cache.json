@@ -1,0 +1,14 @@
+{
+  "packageInformation": {
+    "todo_manager": {
+      "rootPackageName": "todo_manager",
+      "fileNameHash": "8622861768052489335",
+      "timeStamp": 1740553293,
+      "buildFlag": true,
+      "exeName": "main",
+      "hasSubPkgs": false
+    }
+  },
+  "jsonHash": "530651237105685279",
+  "rootPackageName": "todo_manager"
+}
