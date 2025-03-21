@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RegisterDemo</string>
+    <string name="app_icon_description">应用图标</string>
+    <string name="nickname_hint">请输入账号</string>
+    <string name="password_hint">请输入密码</string>
+    <string name="agreement_text">我已阅读并同意用户协议</string>
+    <string name="register_button">注册</string>
+    <string name="login_button">登录</string>
+    <string name="register_link">跳转注册</string>
+    <string name="login_link">跳转登录</string>
+</resources>

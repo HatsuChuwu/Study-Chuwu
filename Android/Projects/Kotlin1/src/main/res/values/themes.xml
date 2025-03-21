@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Hello" parent="android:Theme.Material.Light.NoActionBar">
+        <!-- 设置启动画面背景颜色 -->
+        <item name="android:windowSplashScreenBackground">@color/white</item>
+        <!-- 设置启动画面图标 -->
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/bg</item>
+        <!-- 设置启动画面图标动画时长 -->
+        <item name="android:windowSplashScreenAnimationDuration">1000</item>
+    </style>
+</resources>

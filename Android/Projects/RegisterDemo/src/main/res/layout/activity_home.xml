@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    这是一个 Android 布局文件，用于定义应用主页的界面布局。
+    使用了 androidx 的 CoordinatorLayout 作为根布局。
+    它可以协调其子视图之间的交互和动画效果。
+ -->
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+        使用 MaterialCardView 作为卡片式容器，它是 Material Design 风格的卡片视图，
+        可以包含其他视图并提供阴影和圆角效果。
+     -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_gravity="center"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="16dp">
+
+        <!--
+            使用 LinearLayout 作为卡片内部的布局容器，将子视图垂直排列。
+         -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="欢迎来到主页"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+                android:layout_gravity="center"
+                tools:ignore="HardcodedText" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="这里是您的个人空间"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

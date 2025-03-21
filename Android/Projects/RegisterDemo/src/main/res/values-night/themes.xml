@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.RegisterDemo" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Material 3 dark theme customization -->
+        <item name="colorPrimary">@color/m3_sys_color_dark_primary</item>
+        <item name="colorOnPrimary">@color/m3_sys_color_dark_on_primary</item>
+        <item name="colorPrimaryContainer">@color/m3_sys_color_dark_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/m3_sys_color_dark_on_primary_container</item>
+        <item name="colorSecondary">@color/m3_sys_color_dark_secondary</item>
+        <item name="colorOnSecondary">@color/m3_sys_color_dark_on_secondary</item>
+        <item name="colorSurface">@color/m3_sys_color_dark_surface</item>
+        <item name="colorOnSurface">@color/m3_sys_color_dark_on_surface</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- dimens.xml 用于统一管理界面尺寸资源，支持多屏幕适配和代码维护。
+主要作用：
+1. 集中定义尺寸常量 - 避免硬编码，语义化命名（如 margin_medium, text_size_large）
+2. 多分辨率适配 - 通过 values-sw[width]dp 目录分级定义适配不同屏幕：
+   (示例) 基准值定义在 values/dimens.xml，适配值在 values-sw360dp/dimens.xml
+3. 动态适配策略 - 基于屏幕密度(dpi)和最小宽度(sw)自动选择匹配资源
+4. 代码动态获取 - 通过 getDimension(R.dimen.x) 读取尺寸值
+适配建议：
+- 以 360dp 宽度为基准尺寸（对应 720x1280 分辨率）
+- 使用屏幕比例公式：适配值 = 基准值 * (实际屏幕宽度 / 基准宽度)
+- 优先使用 sw 限定符而非屏幕方向限定符
+典型用法：
+<dimen name="btn_width">180dp</dimen>  // 按钮标准宽度
+<dimen name="title_size">20sp</dimen>  // 标题文字尺寸 -->
+
+<resources>
+    <!-- 输入框和按钮的水平边距 -->
+    <dimen name="input_horizontal_margin">32dp</dimen>
+    <!-- 输入框和按钮的最大宽度 -->
+    <dimen name="input_max_width">600dp</dimen>
+</resources>
