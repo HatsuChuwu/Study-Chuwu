@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        android:contentDescription="@null"
+        android:src="@drawable/tupian1"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/leftImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/imageView"
+        android:contentDescription="@null"
+        android:src="@drawable/a1"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/rightImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/imageView"
+        android:contentDescription="@null"
+        android:src="@drawable/a1"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/topImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_above="@id/imageView"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/a2"
+        android:contentDescription="@null" />
+
+    <ImageView
+        android:id="@+id/bottomImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/imageView"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/a2"
+        android:contentDescription="@null" />
+
+</RelativeLayout>
