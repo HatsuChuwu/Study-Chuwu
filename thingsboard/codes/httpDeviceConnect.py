@@ -1,17 +1,16 @@
 import requests
 import time
-import random
 
 # ThingsBoard 服务器地址
-thingsboard_url = "http://127.0.0.1:8080/api/v1/{access_token}/telemetry"
+thingsboard_url = "http://210.28.148.162:8080/api/v1/{access_token}/telemetry"
 
 # 设备访问令牌 (device access token)
-access_token = "k6wcyyvwwtq3s73ukrti"
+access_token = "yuzusoft"
 
 while True:
-    # 生成随机的温度和湿度数据
-    temperature = round(random.uniform(20.0, 30.0), 1)  # 温度在 20.0 到 30.0 之间
-    humidity = round(random.uniform(50.0, 70.0), 1)     # 湿度在 50.0 到 70.0 之间
+    # 固定的温度和湿度数据
+    temperature = 23.0
+    humidity = 37.3
 
     # 传送的数据 (例如，传感器数据)
     data = {
@@ -30,3 +29,4 @@ while True:
 
     # 每隔三秒发送一次
     time.sleep(3)
+    
