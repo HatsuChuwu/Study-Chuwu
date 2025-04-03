@@ -189,27 +189,33 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // 设置点击菜单外区域关闭菜单
-        slideMenu.setOnClickListener(v -> {
-            // 获取点击位置
-            float x = v.getX();
-            float y = v.getY();
-            
-            // 获取菜单容器
-            View menuContainer = slideMenu.findViewById(R.id.menu_container);
-            
-            // 获取菜单容器的位置和尺寸
-            int[] location = new int[2];
-            menuContainer.getLocationOnScreen(location);
-            int menuLeft = location[0];
-            int menuTop = location[1];
-            int menuRight = menuLeft + menuContainer.getWidth();
-            int menuBottom = menuTop + menuContainer.getHeight();
-            
-            // 判断点击位置是否在菜单容器外
-            if (x < menuLeft || x > menuRight || y < menuTop || y > menuBottom) {
-                hideMenu();
+        slideMenu.setOnTouchListener((v, event) -> {
+            // 只处理点击事件
+            if (event.getAction() == android.view.MotionEvent.ACTION_UP) {
+                // 获取点击位置（屏幕坐标）
+                float x = event.getRawX();
+                float y = event.getRawY();
+                
+                // 获取菜单容器
+                View menuContainer = slideMenu.findViewById(R.id.menu_container);
+                
+                // 获取菜单容器的位置和尺寸
+                int[] location = new int[2];
+                menuContainer.getLocationOnScreen(location);
+                int menuLeft = location[0];
+                int menuTop = location[1];
+                int menuRight = menuLeft + menuContainer.getWidth();
+                int menuBottom = menuTop + menuContainer.getHeight();
+                
+                // 判断点击位置是否在菜单容器外
+                if (x < menuLeft || x > menuRight || y < menuTop || y > menuBottom) {
+                    hideMenu();
+                    return true;
+                }
             }
+            return true;
         });
+
         
         // 防止点击菜单内容区域关闭菜单
         // 拦截点击事件，防止传递到父视图
