@@ -1,6 +1,6 @@
 package com.example.listview;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,8 +24,6 @@ import java.util.List;
 
 public class FruitDetailActivity extends AppCompatActivity {
 
-    private ViewPager viewPager;
-    private PagerTabStrip pagerTabStrip;
     private Fruit fruit;
     private List<View> viewList;
     private List<String> selectedFruits;
@@ -40,9 +38,9 @@ public class FruitDetailActivity extends AppCompatActivity {
         fruit = FruitData.getFruitList().get(position);
 
         // 初始化ViewPager和PagerTabStrip
-        viewPager = findViewById(R.id.viewPager);
-        pagerTabStrip = findViewById(R.id.pagerTabStrip);
-        pagerTabStrip.setTabIndicatorColorResource(R.color.purple_500);
+        ViewPager viewPager = findViewById(R.id.viewPager);
+        PagerTabStrip pagerTabStrip = findViewById(R.id.pagerTabStrip);
+        pagerTabStrip.setTabIndicatorColorResource(R.color.tab_indicator_color);
         
         // 初始化选中水果列表
         selectedFruits = new ArrayList<>();
@@ -59,7 +57,7 @@ public class FruitDetailActivity extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         
         // 初始化详情页面
-        View detailView = inflater.inflate(R.layout.fruit_detail, null);
+        @SuppressLint("InflateParams") View detailView = inflater.inflate(R.layout.fruit_detail, null);
         TextView nameTextView = detailView.findViewById(R.id.fruit_detail_name);
         ImageView imageView = detailView.findViewById(R.id.fruit_detail_image);
         TextView descriptionTextView = detailView.findViewById(R.id.fruit_detail_description);
@@ -75,7 +73,7 @@ public class FruitDetailActivity extends AppCompatActivity {
         viewList.add(detailView);
         
         // 初始化评论页面
-        View commentsView = inflater.inflate(R.layout.fruit_comments, null);
+        @SuppressLint("InflateParams") View commentsView = inflater.inflate(R.layout.fruit_comments, null);
         TextView commentNameTextView = commentsView.findViewById(R.id.fruit_comment_name);
         LinearLayout commentsContainer = commentsView.findViewById(R.id.comments_container);
         EditText editComment = commentsView.findViewById(R.id.edit_comment);
@@ -87,7 +85,7 @@ public class FruitDetailActivity extends AppCompatActivity {
         // 添加评论
         String[] comments = fruit.getComments();
         for (String comment : comments) {
-            View commentView = inflater.inflate(R.layout.comment_item, null);
+            @SuppressLint("InflateParams") View commentView = inflater.inflate(R.layout.comment_item, null);
             TextView commentTextView = commentView.findViewById(R.id.comment_text);
             commentTextView.setText(comment);
             commentsContainer.addView(commentView);
@@ -97,7 +95,7 @@ public class FruitDetailActivity extends AppCompatActivity {
         btnSendComment.setOnClickListener(v -> {
             String commentText = editComment.getText().toString().trim();
             if (!commentText.isEmpty()) {
-                View commentView = inflater.inflate(R.layout.comment_item, null);
+                @SuppressLint("InflateParams") View commentView = inflater.inflate(R.layout.comment_item, null);
                 TextView commentTextView = commentView.findViewById(R.id.comment_text);
                 commentTextView.setText(commentText);
                 commentsContainer.addView(commentView, 0); // 添加到顶部
@@ -114,7 +112,7 @@ public class FruitDetailActivity extends AppCompatActivity {
         viewList.add(commentsView);
         
         // 初始化订购页面
-        View orderView = inflater.inflate(R.layout.fruit_order, null);
+        @SuppressLint("InflateParams") View orderView = inflater.inflate(R.layout.fruit_order, null);
         GridLayout checkboxContainer = orderView.findViewById(R.id.fruit_checkbox_container);
         Button btnSubmitOrder = orderView.findViewById(R.id.btn_submit_order);
         TextView selectedFruitsText = orderView.findViewById(R.id.selected_fruits_text);
@@ -195,8 +193,8 @@ public class FruitDetailActivity extends AppCompatActivity {
     }
     
     // ViewPager适配器
-    private class MyPagerAdapter extends PagerAdapter {
-        private List<View> viewList;
+    private static class MyPagerAdapter extends PagerAdapter {
+        private final List<View> viewList;
         private final String[] titles = {"水果介绍", "水果评价", "水果订购"};
 
         public MyPagerAdapter(List<View> viewList) {

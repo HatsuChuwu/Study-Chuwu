@@ -5,4 +5,5 @@
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
+    <color name="tab_indicator_color">#38ffe2</color>
 </resources>
